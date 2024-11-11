@@ -17,7 +17,8 @@ NEWSPIDER_MODULE = "model_scrape.spiders"
 #USER_AGENT = "model_scrape (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+# COMPRESSION_ENABLED = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -91,3 +92,12 @@ ROBOTSTXT_OBEY = True
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+CONCURRENT_REQUESTS = 16  # Adjust based on the server's capacity
+CONCURRENT_REQUESTS_PER_DOMAIN = 8
+DOWNLOAD_DELAY = 2  # Add a slight delay to prevent bans
+RANDOMIZE_DOWNLOAD_DELAY = True  # Randomize delay
+# Add this to settings.py or within your spider's custom settings.
+custom_settings = {
+    'HTTPCACHE_ENABLED': False
+}
