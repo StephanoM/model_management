@@ -97,7 +97,15 @@ CONCURRENT_REQUESTS = 16  # Adjust based on the server's capacity
 CONCURRENT_REQUESTS_PER_DOMAIN = 8
 DOWNLOAD_DELAY = 2  # Add a slight delay to prevent bans
 RANDOMIZE_DOWNLOAD_DELAY = True  # Randomize delay
-# Add this to settings.py or within your spider's custom settings.
-custom_settings = {
-    'HTTPCACHE_ENABLED': False
+
+
+
+# Use HTTP or HTTPS based on your needs
+PROXY = 'http://brd-customer-hl_0232cbde-zone-datacenter_proxy1:t2bn2yo214nd@brd.superproxy.io:22225'
+
+# Enable proxy middleware
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 750,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 550,
 }
+HTTPCACHE_ENABLED = False
